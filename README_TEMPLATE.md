@@ -54,7 +54,6 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 <details>
 <summary>📈 Analytics Config</summary>
 
-```markdown
 {
   "timeframes": {
     "All Time": null,
@@ -75,7 +74,6 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
     "include": ["OVERVIEW", "LANGUAGE", "COMMITS", "PULSE"]
   }
 }
-```
 
 </details>
 ```
