@@ -50,10 +50,11 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 (extra space added betweeb < and ! so that the blocks dont get replaced and the example will show)
 
 2. **Add the configuration block** at the bottom (hidden in `<details>`):
-
+```markdown
 <details>
 <summary>📈 Analytics Config</summary>
 
+```markdown
 {
   "timeframes": {
     "All Time": null,
@@ -74,9 +75,10 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
     "include": ["OVERVIEW", "LANGUAGE", "COMMITS", "PULSE"]
   }
 }
+```
 
 </details>
-
+```
 
 3. **Run the analytics script**:
 
