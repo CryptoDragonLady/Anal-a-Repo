@@ -1,4 +1,5 @@
-# Please, if you like this and you want to contribute, fork it and make a pull request. I'd love you see your additions. -C
+# Please, if you like this and you want to contribute, fork it and make a pull request. 
+I'd love you see your additions. -C
 ---
 
 ````markdown
