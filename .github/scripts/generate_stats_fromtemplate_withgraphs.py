@@ -228,12 +228,12 @@ if __name__ == "__main__":
 
     # Remove all markers and config block
     output_text = re.sub(r"<!-- STATS BREAKDOWN (START|END).*?-->", "", output_text)
-    output_text = re.sub(
-        r"<details>\s*<summary>.*?Analytics Config.*?</summary>.*?</details>",
-        "",
-        output_text,
-        flags=re.DOTALL | re.IGNORECASE,
-    )
-
+#    output_text = re.sub(
+#        r"<details>\s*<summary>.*?Analytics Config.*?</summary>.*?</details>",
+#        "",
+#        output_text,
+#        flags=re.DOTALL | re.IGNORECASE,
+#    )
+# Commented out so it displays in the readme. 
     OUTPUT_PATH.write_text(output_text.strip() + "\n")
     print("✅ README generated with all analytics blocks.")
