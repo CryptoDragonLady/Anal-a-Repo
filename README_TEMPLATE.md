@@ -2,7 +2,6 @@
 I'd love you see your additions. -C
 ---
 
-````markdown
 # 📊 GitHub Repository Analytics
 
 This repository contains a GitHub Action + Python scripts that automatically generate **repository analytics** and update your README with:
@@ -31,27 +30,27 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 
 1. **Include the template placeholders** in your `README_TEMPLATE.md`:
 
-```markdown
-<!-- STATS BREAKDOWN START:OVERVIEW -->
-<!-- Placeholder for overview analytics -->
-<!-- STATS BREAKDOWN END:OVERVIEW -->
+< !-- STATS BREAKDOWN START:OVERVIEW -->
+< !-- Placeholder for overview analytics -->
+< !-- STATS BREAKDOWN END:OVERVIEW -->
 
-<!-- STATS BREAKDOWN START:LANGUAGE -->
-<!-- Placeholder for language analytics -->
-<!-- STATS BREAKDOWN END:LANGUAGE -->
+< !-- STATS BREAKDOWN START:LANGUAGE -->
+< !-- Placeholder for language analytics -->
+< !-- STATS BREAKDOWN END:LANGUAGE -->
 
-<!-- STATS BREAKDOWN START:COMMITS -->
-<!-- Placeholder for commit activity analytics -->
-<!-- STATS BREAKDOWN END:COMMITS -->
+< !-- STATS BREAKDOWN START:COMMITS -->
+< !-- Placeholder for commit activity analytics -->
+< !-- STATS BREAKDOWN END:COMMITS -->
 
-<!-- STATS BREAKDOWN START:PULSE -->
-<!-- Placeholder for repository pulse -->
-<!-- STATS BREAKDOWN END:PULSE -->
-````
+< !-- STATS BREAKDOWN START:PULSE -->
+< !-- Placeholder for repository pulse -->
+< !-- STATS BREAKDOWN END:PULSE -->
+
+
+(extra space added betweeb < and ! so that the blocks dont get replaced and the example will show)
 
 2. **Add the configuration block** at the bottom (hidden in `<details>`):
 
-````markdown
 <details>
 <summary>📈 Analytics Config</summary>
 
@@ -79,7 +78,7 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 ```
 
 </details>
-````
+
 
 3. **Run the analytics script**:
 
