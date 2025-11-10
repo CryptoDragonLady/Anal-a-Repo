@@ -2,7 +2,6 @@
 I'd love you see your additions. -C
 ---
 
-````markdown
 # 📊 GitHub Repository Analytics
 
 This repository contains a GitHub Action + Python scripts that automatically generate **repository analytics** and update your README with:
@@ -31,92 +30,29 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 
 1. **Include the template placeholders** in your `README_TEMPLATE.md`:
 
-```markdown
-## 📊 Repository Analytics Overview
+< !-- STATS BREAKDOWN START:OVERVIEW -->
+< !-- Placeholder for overview analytics -->
+< !-- STATS BREAKDOWN END:OVERVIEW -->
 
-### All Time
+< !-- STATS BREAKDOWN START:LANGUAGE -->
+< !-- Placeholder for language analytics -->
+< !-- STATS BREAKDOWN END:LANGUAGE -->
 
-| Contributor | Commits | +Add | -Del | Total | Top Languages |
-|-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
-| CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
+< !-- STATS BREAKDOWN START:COMMITS -->
+< !-- Placeholder for commit activity analytics -->
+< !-- STATS BREAKDOWN END:COMMITS -->
 
-### Last 30 Days
-
-| Contributor | Commits | +Add | -Del | Total | Top Languages |
-|-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
-| CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
-
-### Last 7 Days
-
-| Contributor | Commits | +Add | -Del | Total | Top Languages |
-|-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
-| CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
-
-### Last 24h
-
-| Contributor | Commits | +Add | -Del | Total | Top Languages |
-|-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
-| CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
+< !-- STATS BREAKDOWN START:PULSE -->
+< !-- Placeholder for repository pulse -->
+< !-- STATS BREAKDOWN END:PULSE -->
 
 
-
-## 🧠 Language Breakdown
-
-### All Time
-![All Time Language Breakdown](stats/lang_all_time.png)
-
-### Last 30 Days
-![Last 30 Days Language Breakdown](stats/lang_last_30_days.png)
-
-### Last 7 Days
-![Last 7 Days Language Breakdown](stats/lang_last_7_days.png)
-
-### Last 24h
-![Last 24h Language Breakdown](stats/lang_last_24h.png)
-
-
-
-## 📈 Commit Activity Trends
-
-### All Time
-![All Time Commit Activity](stats/activity_all_time.png)
-
-### Last 30 Days
-![Last 30 Days Commit Activity](stats/activity_last_30_days.png)
-
-### Last 7 Days
-![Last 7 Days Commit Activity](stats/activity_last_7_days.png)
-
-### Last 24h
-![Last 24h Commit Activity](stats/activity_last_24h.png)
-
-
-
-## ⚡ Repository Pulse
-
-- **Total Commits:** 177
-- **Contributors:** 3
-- **Lines Added:** 41130
-- **Lines Deleted:** 21
-- **First Commit Date:** 2025-11-09
-- **Last Commit Date:** 2025-11-10
-
-
-````
+(extra space added betweeb < and ! so that the blocks dont get replaced and the example will show)
 
 2. **Add the configuration block** at the bottom (hidden in `<details>`):
 
-````markdown
 
-````
+
 
 3. **Run the analytics script**:
 
@@ -139,32 +75,32 @@ python scripts/generate_stats.py
 
 | Contributor | Commits | +Add | -Del | Total | Top Languages |
 |-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
+| Celeste Weingartner | 175 | 40132 | 20 | 40152 | JSON (18070), Other (9990), Markdown (6656), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
+| github-actions[bot] | 3 | 377 | 41 | 418 | Markdown (418) |
 | CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
 
 ### Last 30 Days
 
 | Contributor | Commits | +Add | -Del | Total | Top Languages |
 |-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
+| Celeste Weingartner | 175 | 40132 | 20 | 40152 | JSON (18070), Other (9990), Markdown (6656), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
+| github-actions[bot] | 3 | 377 | 41 | 418 | Markdown (418) |
 | CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
 
 ### Last 7 Days
 
 | Contributor | Commits | +Add | -Del | Total | Top Languages |
 |-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
+| Celeste Weingartner | 175 | 40132 | 20 | 40152 | JSON (18070), Other (9990), Markdown (6656), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
+| github-actions[bot] | 3 | 377 | 41 | 418 | Markdown (418) |
 | CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
 
 ### Last 24h
 
 | Contributor | Commits | +Add | -Del | Total | Top Languages |
 |-------------|----------|------|------|--------|----------------|
-| Celeste Weingartner | 174 | 40116 | 3 | 40119 | JSON (18070), Other (9990), Markdown (6623), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
-| github-actions[bot] | 2 | 353 | 18 | 371 | Markdown (371) |
+| Celeste Weingartner | 175 | 40132 | 20 | 40152 | JSON (18070), Other (9990), Markdown (6656), Python (2380), HTML (2258), TypeScript (311), Text (289), YAML (83), CSS (65), JavaScript (50) |
+| github-actions[bot] | 3 | 377 | 41 | 418 | Markdown (418) |
 | CryptoDragonLady | 1 | 661 | 0 | 661 | Other (661) |
 
 
@@ -209,10 +145,10 @@ python scripts/generate_stats.py
 
 ## ⚡ Repository Pulse
 
-- **Total Commits:** 177
+- **Total Commits:** 179
 - **Contributors:** 3
-- **Lines Added:** 41130
-- **Lines Deleted:** 21
+- **Lines Added:** 41170
+- **Lines Deleted:** 61
 - **First Commit Date:** 2025-11-09
 - **Last Commit Date:** 2025-11-10
 
