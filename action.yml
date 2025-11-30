@@ -1,5 +1,5 @@
 name: Repository Analytics
-
+description: 6 different versions of a python script you can use in an action to generate analytics for your README.md from your repo, also featuring way too much documentation on how to use it. 
 on:
   push:
     branches:
