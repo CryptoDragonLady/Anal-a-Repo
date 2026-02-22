@@ -10,6 +10,7 @@ This repository contains a GitHub Action + Python scripts that automatically gen
 - Commit activity trends
 - Language breakdowns
 - Repository pulse (total commits, lines added/deleted, contributors)
+- Changelog generated from recent git history
 - Graphical visualizations using matplotlib
 
 The analytics are **template-driven** and fully configurable via JSON embedded in the template.
@@ -21,7 +22,7 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 - **Template-Based:** Keep your README clean; analytics are injected from a template with placeholders.
 - **Configurable:** Control timeframes, sections, graph sizes, and ignored file types using JSON.
 - **Graphical Output:** Automatically generates charts for language breakdown and commit activity.
-- **Multiple Timeframes:** Supports All Time, Last 30 Days, Last 7 Days, Last 24h, or custom timeframes.
+- **Multiple Timeframes:** Supports All Time, Last 90 Days, Last 30 Days, Last 24 Hours, or custom windows.
 - **Per-Section Control:** Select which analytics blocks are included in the output README.
 
 ---
@@ -46,6 +47,10 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 < !-- Placeholder for repository pulse -->
 < !-- STATS BREAKDOWN END:PULSE -->
 
+< !-- STATS BREAKDOWN START:CHANGELOG -->
+< !-- Placeholder for changelog analytics -->
+< !-- STATS BREAKDOWN END:CHANGELOG -->
+
 
 (extra space added betweeb < and ! so that the blocks dont get replaced and the example will show)
 
@@ -57,21 +62,33 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 {
   "timeframes": {
     "All Time": null,
-    "Last 30 Days": 30,
-    "Last 7 Days": 7,
-    "Last 24h": 1
-  },
-  "languages": {
-    "ignore": ["lock", "json"],
-    "show_graphs": true
+    "Last 90 Days": "90d",
+    "Last 30 Days": "30d",
+    "Last 24 Hours": "24h"
   },
   "graphs": {
-    "width": 50,
-    "height": 10,
+    "show": true,
+    "width": 720,
+    "height": 320,
     "color": "#4e79a7"
   },
+  "languages": {
+    "show_breakdown": true,
+    "ignore": ["lock", "json"]
+  },
+  "contributors": {
+    "show": true,
+    "max": 10
+  },
+  "changelog": {
+    "show": true,
+    "max_entries": 80,
+    "max_days": 45,
+    "max_per_day": 8,
+    "include_authors": true
+  },
   "sections": {
-    "include": ["OVERVIEW", "LANGUAGE", "COMMITS", "PULSE"]
+    "include": ["PULSE", "OVERVIEW", "COMMITS", "LANGUAGE", "CHANGELOG"]
   }
 }
 
@@ -81,11 +98,11 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 3. **Run the analytics script**:
 
 ```bash
-python scripts/generate_stats.py
+python .github/scripts/generate_stats_enhanced.py
 ```
 
 4. **Output:**
-   The script generates a fully updated `README.md` with all analytics blocks filled, charts saved in the `stats/` directory, and no leftover template markers.
+   The script updates `README.md` in place, refreshes all configured analytics blocks, saves charts to `stats/`, and preserves template markers for subsequent runs.
 
 ---
 
@@ -123,6 +140,14 @@ python scripts/generate_stats.py
 
 <!-- STATS BREAKDOWN END:PULSE -->
 
+### Recent Updates
+
+<!-- STATS BREAKDOWN START:CHANGELOG -->
+
+<!-- Placeholder for changelog analytics -->
+
+<!-- STATS BREAKDOWN END:CHANGELOG -->
+
 ---
 
 ## 🛠 Configuration Options
@@ -130,6 +155,7 @@ python scripts/generate_stats.py
 * **timeframes:** Define custom labels and durations (in days) or `null` for all time.
 * **languages.ignore:** File extensions to ignore in language analytics.
 * **graphs:** Set chart width, height, and color.
+* **changelog:** Configure max entries/time window and author visibility for changelog output.
 * **sections.include:** Select which analytics blocks to render in the README.
 
 > 💡 The JSON config is parsed directly from this template; you do **not** need to edit the script.
@@ -169,7 +195,7 @@ jobs:
         with:
           python-version: "3.x"
       - name: Generate analytics
-        run: python scripts/generate_stats.py
+        run: python .github/scripts/generate_stats_enhanced.py
       - name: Commit and push updated README
         run: |
           git config user.name "github-actions[bot]"
@@ -201,7 +227,7 @@ jobs:
         with:
           python-version: "3.x"
       - name: Generate analytics
-        run: python scripts/generate_stats.py
+        run: python .github/scripts/generate_stats_enhanced.py
       - name: Commit and push updated README
         run: |
           git config user.name "github-actions[bot]"
@@ -248,21 +274,33 @@ This template:
 {
   "timeframes": {
     "All Time": null,
-    "Last 30 Days": 30,
-    "Last 7 Days": 7,
-    "Last 24h": 1
-  },
-  "languages": {
-    "ignore": ["lock", "json"],
-    "show_graphs": true
+    "Last 90 Days": "90d",
+    "Last 30 Days": "30d",
+    "Last 24 Hours": "24h"
   },
   "graphs": {
-    "width": 50,
-    "height": 10,
+    "show": true,
+    "width": 720,
+    "height": 320,
     "color": "#4e79a7"
   },
+  "languages": {
+    "show_breakdown": true,
+    "ignore": ["lock", "json"]
+  },
+  "contributors": {
+    "show": true,
+    "max": 10
+  },
+  "changelog": {
+    "show": true,
+    "max_entries": 80,
+    "max_days": 45,
+    "max_per_day": 8,
+    "include_authors": true
+  },
   "sections": {
-    "include": ["OVERVIEW", "LANGUAGE", "COMMITS", "PULSE"]
+    "include": ["PULSE", "OVERVIEW", "COMMITS", "LANGUAGE", "CHANGELOG"]
   }
 }
 ```
