@@ -10,6 +10,7 @@ This repository contains a GitHub Action + Python scripts that automatically gen
 - Commit activity trends
 - Language breakdowns
 - Repository pulse (total commits, lines added/deleted, contributors)
+- Changelog generated from recent git history
 - Graphical visualizations using matplotlib
 
 The analytics are **template-driven** and fully configurable via JSON embedded in the template.
@@ -57,21 +58,33 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 {
   "timeframes": {
     "All Time": null,
-    "Last 30 Days": 30,
-    "Last 7 Days": 7,
-    "Last 24h": 1
-  },
-  "languages": {
-    "ignore": ["lock", "json"],
-    "show_graphs": true
+    "Last 90 Days": "90d",
+    "Last 30 Days": "30d",
+    "Last 24 Hours": "24h"
   },
   "graphs": {
-    "width": 50,
-    "height": 10,
+    "show": true,
+    "width": 720,
+    "height": 320,
     "color": "#4e79a7"
   },
+  "languages": {
+    "show_breakdown": true,
+    "ignore": ["lock", "json"]
+  },
+  "contributors": {
+    "show": true,
+    "max": 10
+  },
+  "changelog": {
+    "show": true,
+    "max_entries": 80,
+    "max_days": 45,
+    "max_per_day": 8,
+    "include_authors": true
+  },
   "sections": {
-    "include": ["OVERVIEW", "LANGUAGE", "COMMITS", "PULSE"]
+    "include": ["PULSE", "OVERVIEW", "COMMITS", "LANGUAGE", "CHANGELOG"]
   }
 }
 
@@ -81,7 +94,7 @@ The analytics are **template-driven** and fully configurable via JSON embedded i
 3. **Run the analytics script**:
 
 ```bash
-python scripts/generate_stats.py
+python .github/scripts/generate_stats_enhanced.py
 ```
 
 4. **Output:**
@@ -224,7 +237,7 @@ jobs:
         with:
           python-version: "3.x"
       - name: Generate analytics
-        run: python scripts/generate_stats.py
+        run: python .github/scripts/generate_stats_enhanced.py
       - name: Commit and push updated README
         run: |
           git config user.name "github-actions[bot]"
@@ -256,7 +269,7 @@ jobs:
         with:
           python-version: "3.x"
       - name: Generate analytics
-        run: python scripts/generate_stats.py
+        run: python .github/scripts/generate_stats_enhanced.py
       - name: Commit and push updated README
         run: |
           git config user.name "github-actions[bot]"
@@ -296,6 +309,121 @@ This template:
 ```
 
 
+## Live Auto-Updated Blocks
+
+These sections are refreshed by `python .github/scripts/generate_stats_enhanced.py` and retain markers for subsequent updates.
+
+### Repository Pulse
+<!-- STATS BREAKDOWN START:PULSE -->
+
+## Repository Pulse
+
+| Metric | Value |
+|--------|-------|
+| Commits (All Time) | 18 |
+| Contributors (All Time) | 3 |
+| Lines Added (All Time) | 41307 |
+| Lines Deleted (All Time) | 211 |
+| Churn (All Time) | 41518 |
+| Files Changed (All Time) | 175 |
+| First Commit Date | 2025-11-29 |
+| Last Commit Date | 2025-11-29 |
+
+_Generated: 2026-02-22 00:05 UTC_
+
+<!-- STATS BREAKDOWN END:PULSE -->
+
+### Repository Overview
+<!-- STATS BREAKDOWN START:OVERVIEW -->
+
+## Repository Analytics Overview
+
+| Window | Commits | Contributors | +Add | -Del | Churn | Files | Avg Churn/Commit |
+|--------|---------|--------------|------|------|-------|-------|------------------|
+| All Time | 18 | 3 | 41307 | 211 | 41518 | 175 | 2306.6 |
+| Last 90 Days | 1 | 1 | 0 | 0 | 0 | 1 | 0.0 |
+| Last 30 Days | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 |
+| Last 24 Hours | 0 | 0 | 0 | 0 | 0 | 0 | 0.0 |
+
+### Top Contributors (Last 90 Days)
+
+| Contributor | Commits | Churn | Share of Churn |
+|-------------|---------|-------|----------------|
+| Celeste Weingartner | 1 | 0 | 0.0% |
+
+### Most Changed Files (Last 90 Days)
+
+| File | Churn |
+|------|-------|
+| `.github/workflows/main.yml => action.yml` | 0 |
+
+<!-- STATS BREAKDOWN END:OVERVIEW -->
+
+### Commit Trends
+<!-- STATS BREAKDOWN START:COMMITS -->
+
+## Commit Activity Trends
+
+### All Time
+- Commits: **18** | Active days: **3** | Peak day: **2025-11-10 (16)**
+- Additions: **41307** | Deletions: **211** | Churn: **41518**
+_No commit activity in this window._
+
+### Last 90 Days
+- Commits: **1** | Active days: **1** | Peak day: **2025-11-29 (1)**
+- Additions: **0** | Deletions: **0** | Churn: **0**
+_No commit activity in this window._
+
+### Last 30 Days
+- Commits: **0** | Active days: **0** | Peak day: **n/a**
+- Additions: **0** | Deletions: **0** | Churn: **0**
+_No commit activity in this window._
+
+### Last 24 Hours
+- Commits: **0** | Active days: **0** | Peak day: **n/a**
+- Additions: **0** | Deletions: **0** | Churn: **0**
+_No commit activity in this window._
+
+<!-- STATS BREAKDOWN END:COMMITS -->
+
+### Language Breakdown
+<!-- STATS BREAKDOWN START:LANGUAGE -->
+
+## Language Breakdown
+
+### All Time
+| Language | Churn | Share |
+|----------|-------|-------|
+| Markdown | 7347 | 50.8% |
+| Python | 2394 | 16.6% |
+| HTML | 2258 | 15.6% |
+| SVG | 764 | 5.3% |
+| Other | 720 | 5.0% |
+| TypeScript | 311 | 2.2% |
+| TXT | 289 | 2.0% |
+| MDX | 176 | 1.2% |
+
+### Last 90 Days
+_No language churn data in this window._
+
+### Last 30 Days
+_No language churn data in this window._
+
+### Last 24 Hours
+_No language churn data in this window._
+
+<!-- STATS BREAKDOWN END:LANGUAGE -->
+
+### Recent Updates
+<!-- STATS BREAKDOWN START:CHANGELOG -->
+
+_No commits found in the configured changelog window._
+
+_Generated: 2026-02-22 00:05 UTC_
+
+<!-- STATS BREAKDOWN END:CHANGELOG -->
+
+
 <details>
 <summary>📈 Analytics Config</summary>
 
@@ -303,21 +431,33 @@ This template:
 {
   "timeframes": {
     "All Time": null,
-    "Last 30 Days": 30,
-    "Last 7 Days": 7,
-    "Last 24h": 1
-  },
-  "languages": {
-    "ignore": ["lock", "json"],
-    "show_graphs": true
+    "Last 90 Days": "90d",
+    "Last 30 Days": "30d",
+    "Last 24 Hours": "24h"
   },
   "graphs": {
-    "width": 50,
-    "height": 10,
+    "show": true,
+    "width": 720,
+    "height": 320,
     "color": "#4e79a7"
   },
+  "languages": {
+    "show_breakdown": true,
+    "ignore": ["lock", "json"]
+  },
+  "contributors": {
+    "show": true,
+    "max": 10
+  },
+  "changelog": {
+    "show": true,
+    "max_entries": 80,
+    "max_days": 45,
+    "max_per_day": 8,
+    "include_authors": true
+  },
   "sections": {
-    "include": ["OVERVIEW", "LANGUAGE", "COMMITS", "PULSE"]
+    "include": ["PULSE", "OVERVIEW", "COMMITS", "LANGUAGE", "CHANGELOG"]
   }
 }
 ```

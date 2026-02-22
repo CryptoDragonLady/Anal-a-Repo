@@ -27,10 +27,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install gitpython pandas matplotlib pygments
+          pip install matplotlib
 
-      - name: Generate analytics
-        run: python .github/scripts/generate_stats_fromtemplate_withgraphs.py
+      - name: Generate analytics and changelog
+        run: python .github/scripts/generate_stats_enhanced.py
 
       - name: Commit updates
         run: |
